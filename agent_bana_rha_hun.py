@@ -1,8 +1,13 @@
 import os
+from dotenv import load_dotenv
 import google.generativeai as genai
-#gemini api = AIzaSyCld-u0s85S4gKYrHYQBP7aNsZOjhxA3OE
 
-genai.configure(api_key = "AIzaSyCld-u0s85S4gKYrHYQBP7aNsZOjhxA3OE")
+load_dotenv()
+
+
+API_KEY = os.getenv("GOOGLE_API_KEY")
+print("API_KEY LOADED IS:", API_KEY)
+genai.configure(api_key = API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 def calculator_baba(expression:str)->str:
     try:
